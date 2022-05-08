@@ -1,24 +1,43 @@
 <div class="container-fluid">
   <h1>Student Enrollment Form</h1>
 
-  <form action="">
+  <form #userForm="ngForm">
+    {{ userForm.value | json }}
     <div class="form-group">
       <label for="Name">Name</label>
-      <input type="text" class="form-control" />
+      <input
+        ngModel
+        #name="ngModel"
+        type="text"
+        class="form-control"
+        name="Name"
+      />
     </div>
 
     <div class="form-group">
       <label for="Email">Email</label>
-      <input type="email" class="form-control" />
+      <input
+        ngModel
+        #email="ngModel"
+        name="Email"
+        type="email"
+        class="form-control"
+      />
     </div>
 
     <div class="form-group">
       <label for="Phone">Phone</label>
-      <input type="tel" class="form-control" />
+      <input
+        ngModel
+        #phone="ngModel"
+        name="Phone"
+        type="tel"
+        class="form-control"
+      />
     </div>
 
     <div class="form-group">
-      <select class="form-select mt-3">
+      <select class="form-select mt-3" ngModel #interest="ngModel" name="">
         <option selected>I'm interested in</option>
         <option *ngFor="let topic of topics">{{ topic }}</option>
       </select>
@@ -28,6 +47,7 @@
       <label>Time Preference</label>
       <div class="form-check mt-2">
         <input
+          ngModel
           class="form-check-input"
           type="radio"
           name="timePreference"
@@ -39,6 +59,7 @@
       </div>
       <div class="form-check">
         <input
+          ngModel
           class="form-check-input"
           type="radio"
           name="timePreference"
@@ -51,12 +72,18 @@
     </div>
 
     <div class="form-check mb-3">
-      <input type="checkbox" class="form-check-input" name="offer" />
+      <input
+        ngModel
+        type="checkbox"
+        class="form-check-input"
+        name="subscribe"
+        
+      />
       <label for="offer" class="form-check-label"
         >Send Me Promotional Offers</label
       >
     </div>
 
-    <button class="btn btn-primary mt-2">Submit</button>
+    <button class="btn btn-primary mt-2" (click)="fun(userForm.value)">Submit</button>
   </form>
 </div>

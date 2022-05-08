@@ -10,5 +10,8 @@ export class AppComponent  {
 
 topics = ['Angular', 'React', 'Vue'];
 
+fun(data){
+  console.log(data);
+}
 
 }
